@@ -1,6 +1,10 @@
 from instapy import InstaPy
 
-session = InstaPy(username="__instapy__", password="UQBu92kXveT8HgK")
+with open('instabot.config') as f:
+	credentials = [line.rstrip() for line in f]
+#credentials = [x.strip() for x in credentials]
+
+session = InstaPy(username=credentials[0], password=credentials[1])
 session.login()
 session.like_by_tags(["cyberpunk2077"])
 session.set_dont_like(["naked", "nsfw"])
